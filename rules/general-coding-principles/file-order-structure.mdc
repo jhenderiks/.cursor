@@ -1,0 +1,12 @@
+---
+description: Defines file structure order.
+globs: **/*.*
+alwaysApply: true
+---
+File structure order:
+1. Imports
+2. Types/Interfaces
+3. Constants
+4. Higher-level/composing functions
+5. Lower-level/utility functions
+6. Exports (if not inline)

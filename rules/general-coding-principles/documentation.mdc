@@ -1,0 +1,6 @@
+---
+description: Rules regarding documentation.
+globs: **/*.*
+alwaysApply: true
+---
+- Remain concise when writing and extending documentation, avoid being overly verbose.

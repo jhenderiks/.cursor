@@ -1,0 +1,9 @@
+---
+description: Enforce kebab-case filenames for .ts and .js
+globs: ["**/*.ts", "**/*.js"]
+alwaysApply: true
+---
+
+- Name JavaScript and TypeScript files in kebab-case (e.g., `my-feature.ts`, `user-service.js`).
+- Avoid camelCase, PascalCase, snake_case, and spaces in filenames.
+- Folder names may vary, but file basenames must be kebab-case; common entry files like `index.ts`/`index.js` are allowed.

@@ -1,0 +1,10 @@
+---
+description: Prefer arrow functions over function declarations
+globs: ["*.js", "*.ts", "*.jsx", "*.tsx"]
+alwaysApply: true
+---
+
+- Prefer arrow functions over traditional function declarations
+- Use `const functionName = () => {}` instead of `function functionName() {}`
+- Exception: Class methods should remain as methods
+- Benefits: Lexical `this` binding, more concise, consistent with modern JS/TS style

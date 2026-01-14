@@ -1,0 +1,8 @@
+---
+description: Prefer const over let for better readability
+globs: *.ts, *.js, *.tsx, *.jsx
+alwaysApply: true
+---
+- Avoid `let` wherever possible - use `const` instead
+- Avoid reassignment: use early returns, helper functions, or `.catch(() => null)` patterns
+- `let` harms readability by signaling potential mutation that readers must track

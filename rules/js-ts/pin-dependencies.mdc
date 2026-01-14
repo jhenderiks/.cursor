@@ -1,0 +1,13 @@
+---
+description: Pin all dependencies except peer dependencies
+globs: ["package.json", "*/package.json", "**/package.json"]
+alwaysApply: true
+---
+
+- Always pin dependencies to exact versions (no `^` or `~` prefix)
+- Exception: peer dependencies may use version ranges
+- Examples:
+  - ✅ Good: `"typescript": "5.7.2"`
+  - ❌ Bad: `"typescript": "^5.7.2"`
+  - ✅ Good (peer): `"react": "^18.0.0"` (peer dependencies only)
+- This ensures reproducible builds and prevents unexpected breaking changes

@@ -1,0 +1,8 @@
+---
+description: Prefix private/unexported module functions with underscore
+globs: ["*.js", "*.ts", "*.jsx", "*.tsx"]
+alwaysApply: true
+---
+- Prefix private (unexported) module-level functions and constants with `_`
+- Example: `const _helper = () => {}` instead of `const helper = () => {}`
+- This makes it clear which symbols are internal vs public API
