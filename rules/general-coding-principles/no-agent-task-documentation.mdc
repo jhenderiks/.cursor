@@ -1,0 +1,9 @@
+---
+description: Prohibits creating documentation files about agent work or progress.
+alwaysApply: true
+---
+- NEVER proactively create .md files to document agent tasks, progress, or work completed
+- Do not create files like: COMPLETION_SUMMARY.md, TEST_STATUS.md, MIGRATION_GUIDE.md, etc.
+- Focus on doing the work, not documenting that you did the work
+- Only create documentation files when explicitly requested by the user
+- Exception: Creating or updating actual project documentation (like API docs, user guides) when that's the task

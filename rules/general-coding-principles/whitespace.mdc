@@ -1,0 +1,8 @@
+---
+description: Enforces whitespace rules to maintain code quality and consistency.
+alwaysApply: true
+---
+- No Trailing Whitespace: Never add trailing whitespace on any line. Always check before saving files.
+- Consistent Indentation: Use 2 spaces for indentation (no tabs).
+- Single Newline at EOF: End all files with exactly one newline character.
+- No Multiple Blank Lines: Maximum one consecutive blank line allowed.

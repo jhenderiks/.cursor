@@ -1,6 +1,5 @@
 ---
 description: Defines file structure order.
-globs: **/*.*
 alwaysApply: true
 ---
 File structure order:

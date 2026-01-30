@@ -1,6 +1,5 @@
 ---
 description: Applies guidelines for descriptive naming conventions and usage of constants over functions in all files.
-globs: **/*.*
 alwaysApply: true
 ---
 - Descriptive Names: Use descriptive names for variables and functions. Prefix event handler functions with "handle" (e.g., handleClick, handleKeyDown).

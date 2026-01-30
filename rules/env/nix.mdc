@@ -1,0 +1,77 @@
+---
+description: Use Nix flakes and direnv for dependency management when available
+alwaysApply: true
+---
+
+# Nix Flake and Direnv Integration
+
+When working in projects with Nix flakes, leverage them for reproducible dependency management.
+
+## Check for Nix Development Environment
+
+Before installing dependencies or running development commands, check if the project uses Nix:
+
+1. **Check for `flake.nix`** in the project root
+2. **Check for `.envrc`** to determine if direnv is configured
+
+## Using Nix Flakes
+
+### With direnv (Preferred)
+
+If both `flake.nix` and `.envrc` exist:
+
+```bash
+# direnv automatically loads the environment
+# Just ensure it's allowed
+direnv allow
+
+# Dependencies are now available in your shell
+# Run commands normally
+bun install
+bun test
+```
+
+### Without direnv
+
+If only `flake.nix` exists:
+
+```bash
+# Enter the Nix development shell
+nix develop
+
+# Then run commands inside the shell
+bun install
+bun test
+```
+
+## When to Use
+
+- **Installing dependencies**: Check if Nix should provide system dependencies
+- **Running builds**: Use the Nix environment for reproducible builds
+- **Development commands**: Ensure dev tools are available via Nix
+- **CI/CD**: Reference Nix environment in pipeline configurations
+
+## Loading Flake Env in Agent/CI Shells
+
+When running terminal commands in a shell that may not have direnv (e.g. Cursor's agent or a fresh terminal), load the flake env first so `bun` and other Nix-provided tools are on PATH:
+
+**Option A (preferred) – load into current shell (env persists for subsequent commands):**
+
+```bash
+cd /path/to/eqx && eval "$(nix print-dev-env 2>/dev/null | grep -v '^LINENO=')"
+```
+
+**Option B – one-off command:**
+
+```bash
+nix develop --command <your-command>
+```
+
+When running `bun`, `bun test`, `bun run`, or other dev commands in this workspace, load the flake env first (run the eval command above) so the Nix-provided tools are used.
+
+## Best Practices
+
+- Always check for Nix environment before suggesting system package managers (apt, brew, etc.)
+- If `flake.nix` exists, prefer Nix-provided tools over global installations
+- Respect existing `.envrc` configuration - don't override direnv setup
+- When adding new dependencies, consider if they should be added to `flake.nix`

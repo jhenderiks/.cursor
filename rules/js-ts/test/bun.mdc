@@ -1,0 +1,62 @@
+---
+description: Bun test framework best practices for unit, integration, and API testing.
+globs: **/*.test.ts,**/*.spec.ts
+alwaysApply: true
+---
+
+## Bun Test Framework
+
+- Import test utilities from `bun:test`: `describe`, `test`, `expect`, `beforeAll`, `afterAll`, `beforeEach`, `afterEach`
+- Use Bun's built-in matchers: `toBe`, `toEqual`, `toBeGreaterThan`, `toBeLessThan`, `toBeGreaterThanOrEqual`, `toBeLessThanOrEqual`, `toBeDefined`, `toBeUndefined`, `toBeTruthy`, `toBeFalsy`, `toContain`, `toHaveLength`, `toMatch`, `toThrow`
+- Handle async operations properly with `async/await` in test functions
+- Run tests with: `bun test`, `bun test --watch`, `bun test --coverage`
+- Use test scripts from package.json: `test:integration`, `test:security`, `test:unit`
+
+## API and Integration Testing
+
+- Test complete workflows from authentication through business logic to validation
+- Validate both success responses with expected status codes (200, 201, 204)
+- Validate error responses with appropriate status codes (400, 401, 403, 404, 500)
+- Create helper functions like `assertSuccessResponse`, `assertErrorResponse` for consistent validation
+- Use test client patterns (e.g., `IntegrationTestClient`) to encapsulate HTTP request logic
+- Verify response payloads match expected schemas and contain required fields
+- Test request validation: missing fields, invalid types, out-of-range values
+- Test authentication and authorization: valid tokens, expired tokens, wrong permissions
+- Test edge cases: insufficient resources, duplicate requests, concurrent operations
+- Use `Promise.all()` to test concurrent operations and race conditions
+- Test pagination with limit/offset parameters and verify no duplicate results
+- Test filtering and query parameters work correctly
+
+## Test Organization
+
+- Structure tests by concern: integration tests, security tests, unit tests
+- Use descriptive describe blocks: 'Successful Flow', 'Error Handling', 'Edge Cases'
+- Group related test cases together for better readability
+- Place shared setup logic in beforeAll/beforeEach hooks
+- Clean up resources in afterAll/afterEach hooks
+- Use test data builders or factories for complex test objects
+
+## Async Testing Patterns
+
+- Always await async operations in tests
+- Use `await delay()` or similar helpers when testing time-dependent behavior
+- Test that async operations complete within reasonable timeframes
+- Handle promise rejections appropriately with try/catch or `.catch()`
+- Verify async operations produce expected side effects
+
+## Assertions
+
+- Make assertions specific and focused on single concerns
+- Use the most specific matcher available (prefer `toBe` over `toBeTruthy`)
+- Assert on both positive and negative cases
+- Verify error messages contain expected text or error codes
+- Check that arrays and objects have expected structure and contents
+- Use `toBeGreaterThan` / `toBeLessThan` for numeric ranges rather than exact values when appropriate
+
+## Test Data
+
+- Use realistic test data that represents actual usage
+- Avoid magic numbers - use named constants for test values
+- Create test data generators for complex objects
+- Use different test data for each test case to ensure independence
+- Mock external dependencies to ensure tests run in isolation

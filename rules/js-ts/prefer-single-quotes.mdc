@@ -1,0 +1,15 @@
+---
+description: Prefer single quotes for strings in JS/TS
+globs: ["*.js", "*.ts", "*.jsx", "*.tsx"]
+alwaysApply: true
+---
+
+- Use single quotes (`'`) for all string literals
+- **Use double quotes when the string contains a single quote** (preferred over escaping)
+- Use template literals (backticks) for string interpolation or multi-line strings
+- Examples:
+  - ✅ Good: `const name = 'foo';`
+  - ✅ Good: `const withQuote = "It's working";` (double quotes when string contains single quote)
+  - ✅ Good: `const interpolated = \`Hello ${name}\`;`
+  - ❌ Bad: `const name = "foo";`
+  - ❌ Bad: `const withQuote = 'It\\'s working';` (avoid escaping)

@@ -1,6 +1,5 @@
 ---
 description: Applies guidelines emphasizing DRY code and functional programming style across all files.
-globs: **/*.*
 alwaysApply: true
 ---
 - Correct and DRY Code: Focus on writing correct, best practice, DRY (Don't Repeat Yourself) code.

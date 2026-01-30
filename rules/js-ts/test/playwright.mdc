@@ -1,0 +1,72 @@
+---
+description: Playwright end-to-end testing best practices for browser-based UI testing.
+globs: **/*.e2e.ts,**/*.e2e.spec.ts,**/e2e/**/*.ts
+alwaysApply: true
+---
+
+## Playwright E2E Testing
+
+You are expert in Playwright end-to-end testing for browser-based applications.
+
+## Fixtures and Setup
+
+- Utilize Playwright fixtures (`test`, `page`, `expect`, `context`) to maintain test isolation
+- Use `test.beforeEach` and `test.afterEach` for setup and teardown
+- Configure global settings in `playwright.config.ts`
+- Use projects for testing multiple browsers and devices
+- Leverage built-in config objects like `devices` for mobile/tablet testing
+
+## Locator Best Practices
+
+- Avoid `page.locator` with CSS/XPath selectors
+- Always prefer built-in role-based locators:
+  - `page.getByRole` - for buttons, links, headings, inputs
+  - `page.getByLabel` - for form inputs with labels
+  - `page.getByText` - for text content
+  - `page.getByTitle` - for elements with title attributes
+  - `page.getByPlaceholder` - for inputs with placeholders
+- Use `page.getByTestId` when `data-testid` attributes are available
+- Store commonly used locators in variables or constants for reuse
+- Chain locators for precise element selection within containers
+
+## Assertions
+
+- Prefer web-first assertions that auto-wait:
+  - `toBeVisible`, `toBeHidden`
+  - `toHaveText`, `toContainText`
+  - `toHaveValue`
+  - `toBeEnabled`, `toBeDisabled`
+  - `toBeChecked`
+  - `toHaveCount`
+- Use `expect` matchers for non-web assertions: `toEqual`, `toContain`, `toBeTruthy`, `toHaveLength`
+- Avoid using `assert` statements
+
+## Waiting and Timing
+
+- Avoid hardcoded timeouts like `page.waitForTimeout(5000)`
+- Use `page.waitForSelector` with specific conditions
+- Wait for network requests: `page.waitForResponse`, `page.waitForRequest`
+- Wait for navigation: `page.waitForURL`, `page.waitForNavigation`
+- Web-first assertions have built-in auto-waiting
+
+## Test Reliability
+
+- Write tests that work reliably in parallel
+- Avoid shared state between tests
+- Use unique test data for each test run
+- Handle dynamic content that may load asynchronously
+- Test critical user paths that reflect real user behavior
+- Keep tests stable and maintainable
+
+## Error Handling
+
+- Implement proper error handling in tests
+- Provide clear, actionable failure messages
+- Log relevant context when tests fail
+- Take screenshots on failure for debugging
+
+## Resources
+
+- Follow best practices from https://playwright.dev/docs/writing-tests
+- Reference https://playwright.dev/docs/locators for locator patterns
+- Check https://playwright.dev/docs/test-assertions for assertion options

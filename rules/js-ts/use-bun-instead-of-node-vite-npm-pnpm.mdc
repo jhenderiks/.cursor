@@ -1,10 +1,10 @@
 ---
 description: Use Bun instead of Node.js, npm, pnpm, or vite.
 globs: "*.ts, *.tsx, *.html, *.css, *.js, *.jsx, package.json"
-alwaysApply: false
+alwaysApply: true
 ---
 
-Default to using Bun instead of Node.js.
+Default to using Bun instead of Node.js, unless another solution is already being used.
 
 - Use `bun <file>` instead of `node <file>` or `ts-node <file>`
 - Use `bun test` instead of `jest` or `vitest`
